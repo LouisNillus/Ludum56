@@ -10,15 +10,32 @@ public class HeadStackManager : MonoBehaviour
     [SerializeField] private SerializedDictionary<HeadType, int> _headsStackMap = new();
     [SerializeField] private SerializedDictionary<HeadType, Head> _headsTemplateMap = new();
 
-    public bool IsEmpty => _headsStackMap.Values.Any(count => count > 0);
+    public bool IsEmpty => !_headsStackMap.Values.Any(count => count > 0);
 
     public UnityEvent<HeadType> OnHeadsCountChanged { get; set; } = new();
+    public UnityEvent OnLevelLoaded { get; set; } = new();
+
+    public void LoadLevel(
+        Level level
+        )
+    {
+        _headsStackMap = new(level.HeadsStackMap);
+
+        OnLevelLoaded.Invoke();
+    }
 
     public bool Has(
         HeadType head_type
         )
     {
         return _headsStackMap.ContainsKey(head_type) && _headsStackMap[head_type] > 0;
+    }
+
+    public int GetCount(
+        HeadType head_type
+        )
+    {
+        return _headsStackMap.ContainsKey(head_type) ? _headsStackMap[head_type] : 0;
     }
 
     public Head PickHead(

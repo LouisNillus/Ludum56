@@ -9,6 +9,7 @@ public class Head : MonoBehaviour
     [SerializeField] private HeadType _headType = HeadType.None;
     [SerializeField, ReadOnly] private EmotionalState _emotionalState = EmotionalState.Neutral;
     [SerializeField] private Wiggle _wiggle = null;
+    [SerializeField] private Shrink _shrink = null;
     [SerializeField] private SpriteRenderer _renderer = null;
 
     [SerializeField] private SerializedDictionary<EmotionalState, Sprite> _statesSprites = new();
@@ -20,6 +21,7 @@ public class Head : MonoBehaviour
     public Cell LastCell { get; set; } = null;
     public Cell AssignedCell { get; set; } = null;
     public HeadStack ParentStack { get; set; } = null;
+    public Wiggle Wiggle => _wiggle;
 
     public EmotionalState EmotionalState
     {
@@ -33,16 +35,16 @@ public class Head : MonoBehaviour
 
             _emotionalState = value;
 
+            _renderer.sprite = _statesSprites[_emotionalState];
             OnEmotionalStateChanged.Invoke(_emotionalState);
         }
     }
 
     public UnityEvent<EmotionalState> OnEmotionalStateChanged { get; } = new();
 
-
     private void OnMouseDown()
     {
-        HeadsManager.Instance.OnHeadSelected.Invoke(this);
+        Cursor.visible = false;
 
         if (ParentStack != null)
         {
@@ -59,13 +61,13 @@ public class Head : MonoBehaviour
             AssignedCell.Head = null;
         }
 
+        EmotionalState = EmotionalState.Neutral;
+
         _wiggle.Play();
     }
 
     private void OnMouseDrag()
     {
-        HeadsManager.Instance.OnHeadMoved.Invoke(this);
-
         this.transform.position = Vector3.Lerp(this.transform.position, Utilities.MousePosition2D(), 0.25f);
 
         TargetCell();
@@ -73,7 +75,7 @@ public class Head : MonoBehaviour
 
     private void OnMouseUp()
     {
-        HeadsManager.Instance.OnHeadDropped.Invoke(this);
+        Cursor.visible = true;
 
         _renderer.sortingOrder = 1;
 
@@ -133,18 +135,26 @@ public class Head : MonoBehaviour
         LastCell = AssignedCell;
         AssignedCell = cell;
         AssignedCell.Populate(this);
+
+        GridManager.Instance.RefreshGridEmotionalStates();
     }
 
     public void SendBackToStack()
     {
         HeadStackManager.Instance.StoreHead(this);
+
+        GridManager.Instance.RefreshGridEmotionalStates();
+    }
+
+    public void Destroy()
+    {
+        _shrink.Play(() => Destroy(gameObject));
     }
 }
 
 public enum EmotionalState
 {
     Neutral = 0,
-    Scared = 1,
-    Happy = 2,
-    Angry = 3
+    Happy = 1,
+    Angry = 2
 }

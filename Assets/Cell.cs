@@ -3,6 +3,7 @@ using UnityEngine;
 public class Cell : MonoBehaviour
 {
     [SerializeField] private Grow _grow = null;
+    [SerializeField] private Shrink _shrink = null;
 
     public SpriteRenderer _background = null;
     public Collider2D _collider = null; //Raycast target is ignored through its layer
@@ -32,5 +33,10 @@ public class Cell : MonoBehaviour
         )
     {
         return _collider.bounds.Contains(new(position.x, position.y, this.transform.position.z));
+    }
+
+    public void Destroy()
+    {
+        _shrink.Play(() => Destroy(gameObject));
     }
 }

@@ -1,9 +1,11 @@
+using TMPro;
 using UnityEngine;
 
 public class HeadStack : MonoBehaviour
 {
     [Header("Frame")]
     public Color _frameColor = Color.white;
+    public TextMeshProUGUI _counterText = null;
 
     [Header("Head")]
     public HeadType _headType = HeadType.None;
@@ -27,8 +29,19 @@ public class HeadStack : MonoBehaviour
     {
         if (changed_head_type == _headType)
         {
+            RefreshCounterText();
             _headRenderer.color = _headRenderer.color.ChangeAlpha(HeadStackManager.Instance.Has(_headType) ? 1f : 0.25f);
         }
+    }
+
+    private void RefreshCounterText()
+    {
+        _counterText.text = HeadStackManager.Instance.GetCount(_headType).ToString();
+    }
+
+    private void HeadStackManager_OnLevelLoaded()
+    {
+        RefreshAvailability(_headType);
     }
 
     private void Start()
@@ -39,6 +52,9 @@ public class HeadStack : MonoBehaviour
         _frameRenderer.color = _frameColor;
         _headRenderer.sprite = _headSprite;
 
+        RefreshCounterText();
+
+        HeadStackManager.Instance.OnLevelLoaded.AddListener(HeadStackManager_OnLevelLoaded);
         HeadStackManager.Instance.OnHeadsCountChanged.AddListener(RefreshAvailability);
     }
 
@@ -58,6 +74,7 @@ public class HeadStack : MonoBehaviour
 
     private void OnDestroy()
     {
+        HeadStackManager.Instance.OnLevelLoaded.RemoveListener(HeadStackManager_OnLevelLoaded);
         HeadStackManager.Instance.OnHeadsCountChanged.RemoveListener(RefreshAvailability);
     }
 }

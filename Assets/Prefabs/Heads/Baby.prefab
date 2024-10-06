@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &6426627096956065444
+--- !u!1001 &3222020468226225653
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,11 +10,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2333764132770036950, guid: 72c777a75e17e8f40b1b1610bc6658a7, type: 3}
       propertyPath: m_Name
-      value: Robot
+      value: Baby
       objectReference: {fileID: 0}
     - target: {fileID: 2555883540379986543, guid: 72c777a75e17e8f40b1b1610bc6658a7, type: 3}
       propertyPath: _headType
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2555883540379986543, guid: 72c777a75e17e8f40b1b1610bc6658a7, type: 3}
       propertyPath: Rules.Array.size
@@ -25,29 +25,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 3e892022eddb80d499a956cea32f0aab, type: 2}
     - target: {fileID: 2555883540379986543, guid: 72c777a75e17e8f40b1b1610bc6658a7, type: 3}
-      propertyPath: _statesSprites._serializedList.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2555883540379986543, guid: 72c777a75e17e8f40b1b1610bc6658a7, type: 3}
       propertyPath: _statesSprites._serializedList.Array.data[0].Value
       value: 
-      objectReference: {fileID: 5852956501226974782, guid: 51e5bc9603383dc4d9354fe9dc54af24, type: 3}
+      objectReference: {fileID: -4956485687162902868, guid: a3a1be4c98839b64b8fd907510c13c46, type: 3}
     - target: {fileID: 2555883540379986543, guid: 72c777a75e17e8f40b1b1610bc6658a7, type: 3}
       propertyPath: _statesSprites._serializedList.Array.data[1].Value
       value: 
-      objectReference: {fileID: 6004158054091571607, guid: faa4a10e88db2534b809c62ac20d52f4, type: 3}
+      objectReference: {fileID: -6945740841028546988, guid: 2e0664cf1784a98478f3e0015575d131, type: 3}
     - target: {fileID: 2555883540379986543, guid: 72c777a75e17e8f40b1b1610bc6658a7, type: 3}
       propertyPath: _statesSprites._serializedList.Array.data[2].Value
       value: 
-      objectReference: {fileID: -5163575860519686429, guid: 3f5e38e9c4a13d1479b6232bcc65e71b, type: 3}
-    - target: {fileID: 5618366155667555756, guid: 72c777a75e17e8f40b1b1610bc6658a7, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5618366155667555756, guid: 72c777a75e17e8f40b1b1610bc6658a7, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
+      objectReference: {fileID: -4283728341619240585, guid: 6291e383e39dda3458b3add73fe08502, type: 3}
     - target: {fileID: 5618366155667555756, guid: 72c777a75e17e8f40b1b1610bc6658a7, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.96119374
@@ -58,7 +46,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5618366155667555756, guid: 72c777a75e17e8f40b1b1610bc6658a7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.02963612
       objectReference: {fileID: 0}
     - target: {fileID: 5618366155667555756, guid: 72c777a75e17e8f40b1b1610bc6658a7, type: 3}
       propertyPath: m_LocalRotation.w
@@ -91,11 +79,7 @@ PrefabInstance:
     - target: {fileID: 8605927809729974024, guid: 72c777a75e17e8f40b1b1610bc6658a7, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 5852956501226974782, guid: 51e5bc9603383dc4d9354fe9dc54af24, type: 3}
-    - target: {fileID: 8605927809729974024, guid: 72c777a75e17e8f40b1b1610bc6658a7, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
+      objectReference: {fileID: -4956485687162902868, guid: a3a1be4c98839b64b8fd907510c13c46, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

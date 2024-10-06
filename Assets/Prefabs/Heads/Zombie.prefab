@@ -10,10 +10,42 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2333764132770036950, guid: 72c777a75e17e8f40b1b1610bc6658a7, type: 3}
       propertyPath: m_Name
-      value: Zombie Variant
+      value: Zombie
       objectReference: {fileID: 0}
     - target: {fileID: 2555883540379986543, guid: 72c777a75e17e8f40b1b1610bc6658a7, type: 3}
       propertyPath: _headType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2555883540379986543, guid: 72c777a75e17e8f40b1b1610bc6658a7, type: 3}
+      propertyPath: Rules.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2555883540379986543, guid: 72c777a75e17e8f40b1b1610bc6658a7, type: 3}
+      propertyPath: Rules.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 6c33ee407dd98b1409b6b6162faa37d1, type: 2}
+    - target: {fileID: 2555883540379986543, guid: 72c777a75e17e8f40b1b1610bc6658a7, type: 3}
+      propertyPath: _statesSprites._serializedList.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2555883540379986543, guid: 72c777a75e17e8f40b1b1610bc6658a7, type: 3}
+      propertyPath: _statesSprites._serializedList.Array.data[0].Value
+      value: 
+      objectReference: {fileID: 391165976015197271, guid: ac64233e5c5ef124497256672df1a2b0, type: 3}
+    - target: {fileID: 2555883540379986543, guid: 72c777a75e17e8f40b1b1610bc6658a7, type: 3}
+      propertyPath: _statesSprites._serializedList.Array.data[1].Value
+      value: 
+      objectReference: {fileID: -8727877611695461582, guid: ec5e19673ddbdeb43b7c25d392efa5ff, type: 3}
+    - target: {fileID: 2555883540379986543, guid: 72c777a75e17e8f40b1b1610bc6658a7, type: 3}
+      propertyPath: _statesSprites._serializedList.Array.data[2].Value
+      value: 
+      objectReference: {fileID: 1657146761457647977, guid: 37aafeb03ea1e254895eb532a2b3c088, type: 3}
+    - target: {fileID: 5618366155667555756, guid: 72c777a75e17e8f40b1b1610bc6658a7, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5618366155667555756, guid: 72c777a75e17e8f40b1b1610bc6658a7, type: 3}
+      propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5618366155667555756, guid: 72c777a75e17e8f40b1b1610bc6658a7, type: 3}
@@ -26,7 +58,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5618366155667555756, guid: 72c777a75e17e8f40b1b1610bc6658a7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.02963612
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5618366155667555756, guid: 72c777a75e17e8f40b1b1610bc6658a7, type: 3}
       propertyPath: m_LocalRotation.w
@@ -59,7 +91,7 @@ PrefabInstance:
     - target: {fileID: 8605927809729974024, guid: 72c777a75e17e8f40b1b1610bc6658a7, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 5911564584492071555, guid: 5b906dd91d1dc584a90a1fe68a6b6613, type: 3}
+      objectReference: {fileID: 391165976015197271, guid: ac64233e5c5ef124497256672df1a2b0, type: 3}
     - target: {fileID: 8605927809729974024, guid: 72c777a75e17e8f40b1b1610bc6658a7, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -70,6 +102,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8605927809729974024, guid: 72c777a75e17e8f40b1b1610bc6658a7, type: 3}
       propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8605927809729974024, guid: 72c777a75e17e8f40b1b1610bc6658a7, type: 3}
+      propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
