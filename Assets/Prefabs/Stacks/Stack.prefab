@@ -137,8 +137,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 35, y: 35}
+  m_AnchoredPosition: {x: -1.28, y: 5.61}
+  m_SizeDelta: {x: 38, y: 38}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8875623236616562047
 CanvasRenderer:
@@ -168,7 +168,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 645920211479949158, guid: fe6600c09547ee1498f9c6c22244b0d8, type: 3}
+  m_Sprite: {fileID: -4960685850778113503, guid: c61cf0c62a0ac2f449ff60d1a4f97bf1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -243,7 +243,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 3
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1e86e4940acb69c4e9444faa814c15a9, type: 2}
   m_sharedMaterial: {fileID: -876113763596626740, guid: 1e86e4940acb69c4e9444faa814c15a9, type: 2}
@@ -497,10 +497,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _frameColor: {r: 1, g: 1, b: 1, a: 1}
+  _counterBackground: {fileID: 7636195634405453297}
   _counterText: {fileID: 7489982556501235058}
   _headType: 0
   _headRenderer: {fileID: 4145654128311923707}
   _headSprite: {fileID: 0}
+  _frameOpened: {fileID: 3547332121874632084, guid: a1959c1a8a0df2d4abcd5dda30c8edc5, type: 3}
+  _frameClosed: {fileID: -3747717001800484648, guid: fbb233e69fe96714086801b4c8f623c2, type: 3}
 --- !u!61 &7503427383329701212
 BoxCollider2D:
   m_ObjectHideFlags: 0

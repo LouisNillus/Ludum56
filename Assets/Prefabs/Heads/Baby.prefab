@@ -23,7 +23,15 @@ PrefabInstance:
     - target: {fileID: 2555883540379986543, guid: 72c777a75e17e8f40b1b1610bc6658a7, type: 3}
       propertyPath: Rules.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 3e892022eddb80d499a956cea32f0aab, type: 2}
+      objectReference: {fileID: 11400000, guid: 6390c63026ec5814893a448f4d426692, type: 2}
+    - target: {fileID: 2555883540379986543, guid: 72c777a75e17e8f40b1b1610bc6658a7, type: 3}
+      propertyPath: Constraints.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2555883540379986543, guid: 72c777a75e17e8f40b1b1610bc6658a7, type: 3}
+      propertyPath: Constraints.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 279af6f0455cdb44186632e00d612266, type: 2}
     - target: {fileID: 2555883540379986543, guid: 72c777a75e17e8f40b1b1610bc6658a7, type: 3}
       propertyPath: _statesSprites._serializedList.Array.data[0].Value
       value: 

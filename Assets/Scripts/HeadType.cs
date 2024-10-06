@@ -6,5 +6,7 @@ public enum HeadType
     Dog = 3,
     Cat = 4,
     WhiteFlag = 5,
-    Baby = 6
+    Baby = 6,
+    Chameleon = 7,
+    Fly = 8
 }

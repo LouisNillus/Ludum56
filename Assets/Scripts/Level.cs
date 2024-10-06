@@ -1,4 +1,6 @@
 using AYellowpaper.SerializedCollections;
+using NaughtyAttributes;
+using System.Linq;
 using UnityEngine;
 
 [CreateAssetMenu]
@@ -11,4 +13,10 @@ public class Level : ScriptableObject
     public SerializedDictionary<HeadType, int> HeadsStackMap => _headsStackMap;
     public int Height => _height;
     public int Width => _width;
+
+    [ReadOnly] public Color _correctSetup = Color.red;
+    private void OnValidate()
+    {
+        _correctSetup = (_height * _width) <= _headsStackMap.Sum(kvp => kvp.Value) ? Color.green : Color.red;
+    }
 }

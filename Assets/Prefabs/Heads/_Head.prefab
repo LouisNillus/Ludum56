@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2555883540379986543}
   - component: {fileID: 7377288909003112309}
   - component: {fileID: 1718333635658762325}
+  - component: {fileID: 3962893862855670838}
   - component: {fileID: 4679762680964381776}
   m_Layer: 0
   m_Name: _Head
@@ -103,6 +104,7 @@ MonoBehaviour:
   _headType: 0
   _emotionalState: 0
   _wiggle: {fileID: 7377288909003112309}
+  _shake: {fileID: 3962893862855670838}
   _shrink: {fileID: 1718333635658762325}
   _renderer: {fileID: 8605927809729974024}
   _statesSprites:
@@ -115,6 +117,7 @@ MonoBehaviour:
       Value: {fileID: 0}
   _hoveredCell: {fileID: 0}
   Rules: []
+  Constraints: []
 --- !u!114 &7377288909003112309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,6 +140,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: edddc0032e87d9c4eb5e7383ddb2eb4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3962893862855670838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2333764132770036950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f478bd3df54e3b4d9dccc43d9cd5397, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!61 &4679762680964381776

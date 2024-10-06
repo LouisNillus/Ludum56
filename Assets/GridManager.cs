@@ -12,17 +12,18 @@ public class GridManager : MonoBehaviour
     public static GridManager Instance = null;
 
     [SerializeField] private float _cellSpacing = 0;
-
     [SerializeField] private Cell _cellTemplate = null;
+    [SerializeField] private Transform _container = null;
 
     private Cell[,] _cells = null;
-    private Level CurrentLevel => _currentLevelIndex < _levels.Count ? _levels[_currentLevelIndex] : _levels.First();
+    public Level CurrentLevel => _currentLevelIndex < _levels.Count ? _levels[_currentLevelIndex] : _levels.First();
 
-    public static bool LockedControls { get; private set; } = false;
+    public static bool GridIsBusy { get; private set; } = false;
+
 
     public IEnumerator GenerateGridWithDelay()
     {
-        LockedControls = true;
+        GridIsBusy = true;
 
         _cells = new Cell[CurrentLevel.Width, CurrentLevel.Height];
 
@@ -33,7 +34,7 @@ public class GridManager : MonoBehaviour
                 Cell cell = Instantiate(_cellTemplate, new Vector2((_cellTemplate.Size + _cellSpacing) * x_index, (_cellTemplate.Size + _cellSpacing) * y_index), Quaternion.identity);
 
                 cell.transform.localScale = Vector3.zero;
-                cell.Grow.Play();
+                cell.Grow.Play(1f);
 
                 yield return new WaitForSeconds(0.15f);
 
@@ -44,7 +45,7 @@ public class GridManager : MonoBehaviour
             }
         }
 
-        LockedControls = false;
+        GridIsBusy = false;
     }
 
     [Button]
@@ -119,6 +120,36 @@ public class GridManager : MonoBehaviour
         return adjacent_cells;
     }
 
+    public List<Cell> GetDiagonalCells(
+        Cell origin,
+        int distance
+        )
+    {
+        List<Cell> diagonal_cells = new();
+
+        int[,] diagonalOffsets = new int[,]
+        {
+        { distance, distance },
+        { distance, -distance },
+        { -distance, distance },
+        { -distance, -distance }
+        };
+
+        for (int i = 0; i < 4; i++)
+        {
+            int adjacent_x = origin.Coordinates.x + diagonalOffsets[i, 0];
+            int adjacent_y = origin.Coordinates.y + diagonalOffsets[i, 1];
+
+            if (adjacent_x >= 0 && adjacent_x < CurrentLevel.Width && adjacent_y >= 0 && adjacent_y < CurrentLevel.Height)
+            {
+                diagonal_cells.Add(_cells[adjacent_x, adjacent_y]);
+            }
+        }
+
+        return diagonal_cells;
+    }
+
+
     public void RefreshGridEmotionalStates()
     {
         foreach (Cell cell in _cells)
@@ -133,6 +164,11 @@ public class GridManager : MonoBehaviour
                 foreach (Rule rule in cell.Head.Rules)
                 {
                     rule.Verify(cell.Head);
+
+                    if (cell.Head.EmotionalState == EmotionalState.Angry) //If one condition leads to Angry state, no need to check the other ones.
+                    {
+                        break;
+                    }
                 }
             }
         }
@@ -155,6 +191,11 @@ public class GridManager : MonoBehaviour
 
     public void ValidateGrid() // Called from UI button
     {
+        if (GridIsBusy)
+        {
+            return;
+        }
+
         int mistakes_count = 0;
 
         foreach (Cell cell in _cells)
@@ -182,14 +223,19 @@ public class GridManager : MonoBehaviour
 
     private IEnumerator CompleteLevel()
     {
-        if (LockedControls)
+        if (GridIsBusy)
         {
             yield break;
         }
 
-        LockedControls = true;
+        GridIsBusy = true;
 
         _currentLevelIndex++;
+
+        if (_currentLevelIndex >= _levels.Count)
+        {
+            _currentLevelIndex = 0;
+        }
 
         if (_cells != null)
         {
@@ -213,36 +259,29 @@ public class GridManager : MonoBehaviour
                 }
             }
 
-            _cells = null;
+            _cells = new Cell[0, 0];
         }
+
+        PlayerPrefs.SetInt("LevelIndex", _currentLevelIndex);
 
         yield return new WaitForSeconds(0.5f);
 
         GenerateGrid();
 
-        LockedControls = false;
+        GridIsBusy = false;
     }
 
     private void Awake()
     {
         Instance = this;
-    }
-
-    private void Start()
-    {
-        GenerateGrid();
+        _currentLevelIndex = PlayerPrefs.HasKey("LevelIndex") ? PlayerPrefs.GetInt("LevelIndex") : 0;
     }
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.P))
         {
-            Cell mouse_cell = GetMouseCell();
-
-            if (mouse_cell != null)
-            {
-                Debug.Log(IsSurrounded(mouse_cell));
-            }
+            StartCoroutine(CompleteLevel());
         }
     }
 }

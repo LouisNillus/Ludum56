@@ -9,6 +9,7 @@ public class Head : MonoBehaviour
     [SerializeField] private HeadType _headType = HeadType.None;
     [SerializeField, ReadOnly] private EmotionalState _emotionalState = EmotionalState.Neutral;
     [SerializeField] private Wiggle _wiggle = null;
+    [SerializeField] private Shake _shake = null;
     [SerializeField] private Shrink _shrink = null;
     [SerializeField] private SpriteRenderer _renderer = null;
 
@@ -16,6 +17,10 @@ public class Head : MonoBehaviour
 
     [SerializeField] private Cell _hoveredCell = null;
     public List<Rule> Rules = new List<Rule>();
+    public List<Constraint> Constraints = new List<Constraint>();
+
+    public AudioClip _select = null;
+    public AudioClip _drop = null;
 
     public HeadType HeadType => _headType;
     public Cell LastCell { get; set; } = null;
@@ -44,6 +49,16 @@ public class Head : MonoBehaviour
 
     private void OnMouseDown()
     {
+
+        ApplyAllConstraintsOfType(ConstraintType.Selection, out bool should_constrain);
+
+        if (should_constrain)
+        {
+            _shake.Play(1);
+
+            return;
+        }
+
         Cursor.visible = false;
 
         if (ParentStack != null)
@@ -68,6 +83,13 @@ public class Head : MonoBehaviour
 
     private void OnMouseDrag()
     {
+        ApplyAllConstraintsOfType(ConstraintType.Selection, out bool should_constrain);
+
+        if (should_constrain)
+        {
+            return;
+        }
+
         this.transform.position = Vector3.Lerp(this.transform.position, Utilities.MousePosition2D(), 0.25f);
 
         TargetCell();
@@ -76,6 +98,13 @@ public class Head : MonoBehaviour
     private void OnMouseUp()
     {
         Cursor.visible = true;
+
+        ApplyAllConstraintsOfType(ConstraintType.Selection, out bool should_constrain);
+
+        if (should_constrain)
+        {
+            return;
+        }
 
         _renderer.sortingOrder = 1;
 
@@ -92,6 +121,23 @@ public class Head : MonoBehaviour
         _wiggle.Stop();
     }
 
+    public void ApplyAllConstraintsOfType(
+        ConstraintType constraint_type,
+        out bool should_constrain
+        )
+    {
+        should_constrain = false;
+
+        foreach (Constraint constraint in Constraints)
+        {
+            if (constraint.Perform(constraint_type, this))
+            {
+                should_constrain = true;
+
+                return;
+            }
+        }
+    }
 
     public void TargetCell()
     {

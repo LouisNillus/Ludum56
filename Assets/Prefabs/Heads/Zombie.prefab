@@ -18,12 +18,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2555883540379986543, guid: 72c777a75e17e8f40b1b1610bc6658a7, type: 3}
       propertyPath: Rules.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2555883540379986543, guid: 72c777a75e17e8f40b1b1610bc6658a7, type: 3}
       propertyPath: Rules.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: 6c33ee407dd98b1409b6b6162faa37d1, type: 2}
+    - target: {fileID: 2555883540379986543, guid: 72c777a75e17e8f40b1b1610bc6658a7, type: 3}
+      propertyPath: Rules.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 3729962561fb1334aa9baf1bd03290d1, type: 2}
     - target: {fileID: 2555883540379986543, guid: 72c777a75e17e8f40b1b1610bc6658a7, type: 3}
       propertyPath: _statesSprites._serializedList.Array.size
       value: 3

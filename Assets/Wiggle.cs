@@ -14,6 +14,7 @@ public class Wiggle : MonoBehaviour
         _wiggleTween.Rewind();
         _wiggleTween = this.transform.DOPunchRotation(Vector3.forward * 10, 1f).SetLoops(loops_count);
     }
+
     public void Stop()
     {
         _wiggleTween.Rewind();

@@ -12,7 +12,7 @@ public class HeadStackManager : MonoBehaviour
 
     public bool IsEmpty => !_headsStackMap.Values.Any(count => count > 0);
 
-    public UnityEvent<HeadType> OnHeadsCountChanged { get; set; } = new();
+    public UnityEvent OnHeadsCountChanged { get; set; } = new();
     public UnityEvent OnLevelLoaded { get; set; } = new();
 
     public void LoadLevel(
@@ -51,7 +51,7 @@ public class HeadStackManager : MonoBehaviour
 
         _headsStackMap[head_type]--;
 
-        OnHeadsCountChanged.Invoke(head_type);
+        OnHeadsCountChanged.Invoke();
 
         Head head = Instantiate(_headsTemplateMap[head_type]);
 
@@ -64,7 +64,7 @@ public class HeadStackManager : MonoBehaviour
     {
         _headsStackMap[head.HeadType]++;
 
-        OnHeadsCountChanged.Invoke(head.HeadType);
+        OnHeadsCountChanged.Invoke();
 
         Destroy(head.gameObject);
     }
@@ -73,7 +73,7 @@ public class HeadStackManager : MonoBehaviour
         HeadType head_type
         )
     {
-        OnHeadsCountChanged.Invoke(head_type);
+        OnHeadsCountChanged.Invoke();
 
         _headsStackMap[head_type]++;
     }
