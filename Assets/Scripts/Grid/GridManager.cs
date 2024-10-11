@@ -1,28 +1,36 @@
-using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GridManager : MonoBehaviour
 {
+    public static GridManager Instance = null;
+
+    [Header("Debug")]
+    public bool _generateOnStart = false;
+
+    [Header("Levels")]
     public List<Level> _levels = new List<Level>();
     public int _currentLevelIndex = 0;
 
-    public static GridManager Instance = null;
-
+    [Header("Grid")]
     [SerializeField] private float _cellSpacing = 0;
     [SerializeField] private Cell _cellTemplate = null;
-
     private Cell[,] _cells = null;
+    private bool _gridIsBusy = false;
+
+
     public Level CurrentLevel => _currentLevelIndex < _levels.Count ? _levels[_currentLevelIndex] : _levels.First();
+    public int LevelsCount => _levels.Count;
 
-    public static bool GridIsBusy { get; private set; } = false;
 
+    public UnityEvent<int> OnLevelGenerated { get; private set; } = new();
 
     public IEnumerator GenerateGridWithDelay()
     {
-        GridIsBusy = true;
+        _gridIsBusy = true;
 
         _cells = new Cell[CurrentLevel.Width, CurrentLevel.Height];
 
@@ -44,12 +52,13 @@ public class GridManager : MonoBehaviour
             }
         }
 
-        GridIsBusy = false;
+        _gridIsBusy = false;
     }
 
-    [Button]
     public void GenerateGrid()
     {
+        OnLevelGenerated.Invoke(_currentLevelIndex);
+
         StartCoroutine(GenerateGridWithDelay());
 
         HeadStackManager.Instance.LoadLevel(CurrentLevel);
@@ -190,7 +199,7 @@ public class GridManager : MonoBehaviour
 
     public void ValidateGrid() // Called from UI button
     {
-        if (GridIsBusy)
+        if (_gridIsBusy)
         {
             return;
         }
@@ -222,12 +231,12 @@ public class GridManager : MonoBehaviour
 
     private IEnumerator CompleteLevel()
     {
-        if (GridIsBusy)
+        if (_gridIsBusy)
         {
             yield break;
         }
 
-        GridIsBusy = true;
+        _gridIsBusy = true;
 
         _currentLevelIndex++;
 
@@ -235,6 +244,7 @@ public class GridManager : MonoBehaviour
         {
             _currentLevelIndex = 0;
         }
+
 
         if (_cells != null)
         {
@@ -267,13 +277,21 @@ public class GridManager : MonoBehaviour
 
         GenerateGrid();
 
-        GridIsBusy = false;
+        _gridIsBusy = false;
     }
 
     private void Awake()
     {
         Instance = this;
         _currentLevelIndex = PlayerPrefs.HasKey("LevelIndex") ? PlayerPrefs.GetInt("LevelIndex") : 0;
+    }
+
+    private void Start()
+    {
+        if (_generateOnStart)
+        {
+            GenerateGrid();
+        }
     }
 
     private void Update()
