@@ -13,7 +13,6 @@ public class GridManager : MonoBehaviour
 
     [SerializeField] private float _cellSpacing = 0;
     [SerializeField] private Cell _cellTemplate = null;
-    [SerializeField] private Transform _container = null;
 
     private Cell[,] _cells = null;
     public Level CurrentLevel => _currentLevelIndex < _levels.Count ? _levels[_currentLevelIndex] : _levels.First();
