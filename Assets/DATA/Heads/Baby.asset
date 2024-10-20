@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87e2a8228704b8f40960d96303b8f2a6, type: 3}
+  m_Name: Baby
+  m_EditorClassIdentifier: 
+  Object: {fileID: 1139050077524107162, guid: 5e586bfe9ccb08841ac6aba31ec091e5, type: 3}
+  MainColor: {r: 0.9333334, g: 0.7176471, b: 0.6039216, a: 1}
+  Sprite: {fileID: -4956485687162902868, guid: a3a1be4c98839b64b8fd907510c13c46, type: 3}
+  StatesSprites:
+    _serializedList:
+    - Key: 0
+      Value: {fileID: -4956485687162902868, guid: a3a1be4c98839b64b8fd907510c13c46, type: 3}
+    - Key: 2
+      Value: {fileID: -6945740841028546988, guid: 2e0664cf1784a98478f3e0015575d131, type: 3}
+    - Key: 1
+      Value: {fileID: -4283728341619240585, guid: 6291e383e39dda3458b3add73fe08502, type: 3}
+  Type: 6
+  Family: 3
+  Rules:
+  - {fileID: 11400000, guid: 6390c63026ec5814893a448f4d426692, type: 2}
+  Constraints:
+  - {fileID: 11400000, guid: 279af6f0455cdb44186632e00d612266, type: 2}
+  SelectSFX: {fileID: 0}
+  DropSFX: {fileID: 0}

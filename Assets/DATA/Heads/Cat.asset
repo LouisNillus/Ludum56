@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87e2a8228704b8f40960d96303b8f2a6, type: 3}
+  m_Name: Cat
+  m_EditorClassIdentifier: 
+  Object: {fileID: 5621766356875541060, guid: 6e461ca943542274383c7e85629d6803, type: 3}
+  MainColor: {r: 0.91372555, g: 0.7176471, b: 0.7294118, a: 1}
+  Sprite: {fileID: 5014390587133400740, guid: 891f57f0b32ec0e4dbb14dbf62fe0768, type: 3}
+  StatesSprites:
+    _serializedList:
+    - Key: 0
+      Value: {fileID: 5014390587133400740, guid: 891f57f0b32ec0e4dbb14dbf62fe0768, type: 3}
+    - Key: 2
+      Value: {fileID: -2151263699092016205, guid: 5c215c78240169e4da750a705ac17749, type: 3}
+    - Key: 1
+      Value: {fileID: 2526177967409063950, guid: 79322a4a35ce4f74fab1e2e7b797b4bd, type: 3}
+  Type: 4
+  Family: 1
+  Rules: []
+  Constraints: []
+  SelectSFX: {fileID: 0}
+  DropSFX: {fileID: 0}

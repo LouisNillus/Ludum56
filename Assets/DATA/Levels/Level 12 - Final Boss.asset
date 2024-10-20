@@ -32,4 +32,22 @@ MonoBehaviour:
       Value: 2
     - Key: 6
       Value: 2
+  _headsMap:
+    _serializedList:
+    - Key: {fileID: 11400000, guid: 0520cee2e279f6c459d8eb45d9a7cc5f, type: 2}
+      Value: 6
+    - Key: {fileID: 11400000, guid: 55469d369e2c3674ab95fb866c65c0e6, type: 2}
+      Value: 4
+    - Key: {fileID: 11400000, guid: 9cf51fc24310c9548bbd47ff3bb2a3db, type: 2}
+      Value: 3
+    - Key: {fileID: 11400000, guid: e227b69dde801e5488f19c72ae984f5b, type: 2}
+      Value: 3
+    - Key: {fileID: 11400000, guid: 0dfe717763ec7714ba5eef08d7814520, type: 2}
+      Value: 3
+    - Key: {fileID: 11400000, guid: 1963a235a3693c74fb6dd8b5b7ec09a9, type: 2}
+      Value: 2
+    - Key: {fileID: 11400000, guid: 0b9ff08e90beeb64f953ceec5270d032, type: 2}
+      Value: 2
+    - Key: {fileID: 11400000, guid: f373a5176e301684cb795ef9b518ab5e, type: 2}
+      Value: 2
   _correctSetup: {r: 0, g: 1, b: 0, a: 1}

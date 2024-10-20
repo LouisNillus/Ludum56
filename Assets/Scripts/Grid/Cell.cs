@@ -14,6 +14,7 @@ public class Cell : MonoBehaviour
     public int Size { get; set; } = 1;
     public Head Head { get; set; } = null;
     public bool Occupied => Head != null;
+    public Vector3 Position => this.transform.position;
 
     public void Populate(
         Head new_head

@@ -97,7 +97,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638640221268226693
+  platformSettingsDirtyTick: 638643784388821187
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -201,7 +201,7 @@ ScriptedImporter:
   - name: WebGL
     overridden: 1
     ignorePlatformSupport: 0
-    maxTextureSize: 2048
+    maxTextureSize: 64
     resizeAlgorithm: 0
     textureFormat: 48
     textureCompression: 1

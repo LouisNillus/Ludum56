@@ -27,12 +27,15 @@ public class GridManager : MonoBehaviour
 
 
     public UnityEvent<int> OnLevelGenerated { get; private set; } = new();
+    public UnityEvent OnGridInitialized { get; private set; } = new();
 
     public IEnumerator GenerateGridWithDelay()
     {
         _gridIsBusy = true;
 
         _cells = new Cell[CurrentLevel.Width, CurrentLevel.Height];
+
+        OnGridInitialized.Invoke();
 
         for (int y_index = 0; y_index < CurrentLevel.Height; y_index++)
         {
@@ -157,7 +160,6 @@ public class GridManager : MonoBehaviour
         return diagonal_cells;
     }
 
-
     public void RefreshGridEmotionalStates()
     {
         foreach (Cell cell in _cells)
@@ -197,7 +199,8 @@ public class GridManager : MonoBehaviour
         return true;
     }
 
-    public void ValidateGrid() // Called from UI button
+    // Called from UI button
+    public void ValidateGrid()
     {
         if (_gridIsBusy)
         {
@@ -300,5 +303,16 @@ public class GridManager : MonoBehaviour
         {
             StartCoroutine(CompleteLevel());
         }
+    }
+
+    public Vector3 GetCenterPoint()
+    {
+        int height = CurrentLevel.Height;
+        int width = CurrentLevel.Width;
+
+        Vector3 adjusted_cell_size = new Vector3(_cellTemplate.Size + _cellSpacing, _cellTemplate.Size + _cellSpacing, 0f);
+
+        // Vector3.zero is usless but is just a way to remember that grid origin is 0,0,0
+        return Vector3.zero + new Vector3(width * adjusted_cell_size.x / 2f, height * adjusted_cell_size.y / 2f, 0) - adjusted_cell_size / 2f;
     }
 }

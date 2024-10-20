@@ -24,4 +24,14 @@ MonoBehaviour:
       Value: 4
     - Key: 5
       Value: 2
+  _headsMap:
+    _serializedList:
+    - Key: {fileID: 11400000, guid: e227b69dde801e5488f19c72ae984f5b, type: 2}
+      Value: 6
+    - Key: {fileID: 11400000, guid: 0dfe717763ec7714ba5eef08d7814520, type: 2}
+      Value: 4
+    - Key: {fileID: 11400000, guid: 0b9ff08e90beeb64f953ceec5270d032, type: 2}
+      Value: 4
+    - Key: {fileID: 11400000, guid: 9cf51fc24310c9548bbd47ff3bb2a3db, type: 2}
+      Value: 2
   _correctSetup: {r: 0, g: 1, b: 0, a: 1}

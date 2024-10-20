@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87e2a8228704b8f40960d96303b8f2a6, type: 3}
+  m_Name: Robot
+  m_EditorClassIdentifier: 
+  Object: {fileID: 8815697049558891723, guid: 06fdca2aa3e92ba4eb13b63ce990ddf7, type: 3}
+  MainColor: {r: 0.7960785, g: 0.8588236, b: 0.98823535, a: 1}
+  Sprite: {fileID: 1985912288417478423, guid: 75d48bfd0ffb77841845fc5ea29b844a, type: 3}
+  StatesSprites:
+    _serializedList:
+    - Key: 0
+      Value: {fileID: 1985912288417478423, guid: 75d48bfd0ffb77841845fc5ea29b844a, type: 3}
+    - Key: 2
+      Value: {fileID: 8709467349934669021, guid: c71b73f81fe678645a242a85142d32b4, type: 3}
+    - Key: 1
+      Value: {fileID: 8122713566048793774, guid: b81e7c638880dfb4abae1824b9b7a27f, type: 3}
+  Type: 2
+  Family: 4
+  Rules: []
+  Constraints: []
+  SelectSFX: {fileID: 0}
+  DropSFX: {fileID: 0}
